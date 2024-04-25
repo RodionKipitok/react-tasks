@@ -32,17 +32,16 @@ import { useState } from 'react';
 
 export const App = () => {
   const [inputValue, setInputValue] = useState('');
-  const [sumNum, setSumNum] = useState('');
+  const [seveSumNum, setSaveSumNum] = useState(null);
 
-  // function calculatesTheSumOfTheNumbers() {
-  //   const parseStrInNum = parseInt(inputValue);
-  //   const arrNum = parseStrInNum.split('');
-  //   const sumOfNumbers = arrNum.reduce((acc, number) => acc + number, 0);
+  function calculatesTheSumOfTheNumbers() {
+    const arrayOfDigits = Array.from(inputValue, Number);
+    const sumNum = arrayOfDigits.reduce((sum, elem) => {
+      return sum + elem;
+    }, 0);
 
-  //   return sumOfNumbers;
-  // }
-
-  // console.log(calculatesTheSumOfTheNumbers());
+    setSaveSumNum(sumNum);
+  }
 
   return (
     <div>
@@ -52,8 +51,9 @@ export const App = () => {
           setInputValue(e.target.value);
         }}
         value={inputValue}
+        onBlur={calculatesTheSumOfTheNumbers}
       />
-      <p>{sumNum}</p>
+      <p>{seveSumNum}</p>
     </div>
   );
 };
