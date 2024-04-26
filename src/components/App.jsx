@@ -30,30 +30,139 @@ import { useState } from 'react';
 //   );
 // };
 
+// №4⊗
+// Дан инпут и абзац. В инпут вводится число. По потери фокуса выведите в абзац сумму цифр введенного числа.
+
+// export const App = () => {
+//   const [inputValue, setInputValue] = useState('');
+//   const [seveSumNum, setSaveSumNum] = useState(null);
+
+//   function calculatesTheSumOfTheNumbers() {
+//     const arrayOfDigits = Array.from(inputValue, Number);
+//     const sumNum = arrayOfDigits.reduce((sum, elem) => {
+//       return sum + elem;
+//     }, 0);
+
+//     setSaveSumNum(sumNum);
+//   }
+
+//   return (
+//     <div>
+//       <input
+//         type="number"
+//         onChange={e => {
+//           setInputValue(e.target.value);
+//         }}
+//         value={inputValue}
+//         onBlur={calculatesTheSumOfTheNumbers}
+//       />
+//       <p>{seveSumNum}</p>
+//     </div>
+//   );
+// };
+
+// export const App = () => {
+//   const [checked, setChecked] = useState(true);
+
+//   return (
+//     <div>
+//       <input
+//         type="checkbox"
+//         checked={checked}
+//         onChange={() => {
+//           setChecked(!checked);
+//         }}
+//       />
+//       <p> state : {checked ? 'checked' : 'not checked'}</p>
+//     </div>
+//   );
+// };
+
+// export const App = () => {
+//   const [checked, setChecked] = useState(true);
+//   const [showStateCheckbox, setShowStateCheckbox] = useState(null);
+//   const hadleClick = () => {
+//     const res = checked ? 'checked' : 'not checked';
+
+//     setShowStateCheckbox(res);
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         type="checkbox"
+//         checked={checked}
+//         onChange={() => {
+//           setChecked(!checked);
+//         }}
+//       />
+//       <br />
+//       <button type="button" onClick={hadleClick}>
+//         click me
+//       </button>
+//       <br />
+//       <p>{showStateCheckbox}</p>
+//     </div>
+//   );
+// };
+
 export const App = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [seveSumNum, setSaveSumNum] = useState(null);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+  const arrLanguagesThatTheUserKnows = [];
 
-  function calculatesTheSumOfTheNumbers() {
-    const arrayOfDigits = Array.from(inputValue, Number);
-    const sumNum = arrayOfDigits.reduce((sum, elem) => {
-      return sum + elem;
-    }, 0);
+  console.log(arrLanguagesThatTheUserKnows);
 
-    setSaveSumNum(sumNum);
-  }
+  const handleAnsewrUser = () => {
+    [checked1, checked2, checked3].map(elem => {
+      if (elem === true) {
+        arrLanguagesThatTheUserKnows.push(elem);
+      }
+    });
+  };
 
   return (
     <div>
-      <input
-        type="number"
-        onChange={e => {
-          setInputValue(e.target.value);
-        }}
-        value={inputValue}
-        onBlur={calculatesTheSumOfTheNumbers}
-      />
-      <p>{seveSumNum}</p>
+      <form action="">
+        <label htmlFor="">
+          html
+          <input
+            type="checkbox"
+            checked={checked1}
+            onChange={() => {
+              setChecked1(!checked1);
+            }}
+          />
+        </label>
+        <br />
+        <label htmlFor="">
+          css
+          <input
+            type="checkbox"
+            checked={checked2}
+            onChange={() => {
+              setChecked2(!checked2);
+            }}
+          />
+        </label>
+        <br />
+        <label htmlFor="">
+          js
+          <input
+            type="checkbox"
+            checked={checked3}
+            onChange={() => {
+              setChecked3(!checked3);
+            }}
+          />
+        </label>
+      </form>
+      <div>
+        {arrLanguagesThatTheUserKnows.map(elem => (
+          <p>{elem}</p>
+        ))}
+      </div>
     </div>
   );
 };
